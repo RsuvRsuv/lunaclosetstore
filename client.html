@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LunaCloset</title>
+  <script>
+    function showAlert() {
+        alert("Button was clicked!");
+    }
+</script>
+  <style>
+    /* Reset styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    /* Body */
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f5f5f5;
+      color: #333;
+    }
+
+    /* Top Bar */
+    .top-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background-color: #333;
+      color: #fff;
+      padding: 15px 30px;
+      position: fixed;
+      width: 100%;
+      top: 0;
+      left: 0;
+      z-index: 1000;
+    }
+
+    /* Logo with animation */
+    .logo {
+      font-size: 24px;
+      font-weight: 900;
+      color: white;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+
+    .logo:hover {
+      transform: scale(1.1);
+    }
+
+    /* Navbar Links */
+    .navbar {
+      display: flex;
+      gap: 20px;
+    }
+
+    .navbar a {
+      color: white;
+      text-decoration: none;
+      font-size: 16px;
+      transition: color 0.3s ease;
+    }
+
+    .navbar a:hover {
+      color: #ddd;
+    }
+
+    /* Trending Section */
+    .trending-section {
+      margin-top: 80px; /* Account for fixed top bar */
+      display: flex;
+      justify-content: center;
+      padding: 50px;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    /* Trending Box */
+    .trending-box {
+      width: 80%;
+      max-width: 1000px;
+      height: 500px;
+      position: relative;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+
+    .trending-box img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    /* Trending Text */
+    .trending-text {
+      position: absolute;
+      top: 30px;
+      right: 30px;
+      color: white;
+      font-size: 36px;
+      font-weight: bold;
+      text-align: right;
+      text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+    }
+
+    /* Product Info Box */
+    .product-info {
+      position: absolute;
+      top: 100px;
+      right: 30px;
+      background-color: black;
+      color: white;
+      padding: 15px;
+      border-radius: 8px;
+      width: 250px;
+      font-size: 18px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    .product-info p {
+      margin-bottom: 8px;
+    }
+
+    /* Product Grid */
+    .product-grid {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      margin-top: 20px;
+    }
+
+    /* Individual Product Box */
+    .product-item {
+      width: 250px;
+      height: 300px;
+      position: relative;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+
+    .product-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .product-name {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      background-color: rgba(0, 0, 0, 0.6);
+      color: white;
+      padding: 5px 10px;
+      font-weight: bold;
+      border-radius: 5px;
+    }
+
+    /* Kids Section */
+    .kids-section {
+      margin-top: 50px;
+      padding: 50px;
+      background-color: #f0f0f5;
+      text-align: center;
+    }
+
+    .kids-section h2 {
+      font-size: 28px;
+      color: #333;
+      margin-bottom: 30px;
+    }
+
+    .kids-grid {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+    }
+
+    /* Sports Section */
+    .sports-section {
+      margin-top: 50px;
+      padding: 50px;
+      background-color: #e8e8e8;
+      text-align: center;
+    }
+
+    .sports-section h2 {
+      font-size: 28px;
+      color: #333;
+      margin-bottom: 30px;
+    }
+
+    .sports-grid {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+    }
+
+    /* Individual Sport Item */
+    .sport-item {
+      width: 250px;
+      height: 300px;
+      position: relative;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+
+    .sport-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .sport-name {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      background-color: rgba(0, 0, 0, 0.6);
+      color: white;
+      padding: 5px 10px;
+      font-weight: bold;
+      border-radius: 5px;
+    }
+    /* Trending Section */
+    .sports-section {
+      margin-top: 80px; /* Account for fixed top bar */
+      display: flex;
+      justify-content: center;
+      padding: 50px;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    /* Trending Box */
+    .sports-box {
+      width: 80%;
+      max-width: 1000px;
+      height: 500px;
+      position: relative;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+
+    .sports-box img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .just-for-you section{
+      margin-top: 50px;
+      padding: 50px;
+      background-color: #e8e8e8;
+      text-align: center;
+    }
+
+    /* Trending Text */
+    .sports-text {
+      position: absolute;
+      top: 30px;
+      right: 30px;
+      color: white;
+      font-size: 36px;
+      font-weight: bold;
+      text-align: right;
+      text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+    }
+    /* Trending Section */
+    .just-for-you-section {
+      margin-top: 80px; /* Account for fixed top bar */
+      display: flex;
+      justify-content: center;
+      padding: 50px;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    /* Trending Box */
+    .just-for-you-box {
+      width: 80%;
+      max-width: 1000px;
+      height: 500px;
+      position: relative;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+
+    .just-for-you-box img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    /* Trending Text */
+    .just-for-you-text {
+      position: absolute;
+      top: 30px;
+      right: 30px;
+      color: white;
+      font-size: 36px;
+      font-weight: bold;
+      text-align: right;
+      text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+    }
+
+    .styled-button {
+            background-color: #6a9db4; /* Green */
+            border: none;
+            color: white;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+            position: absolute;
+            bottom: -1px; /* Position 10px from the bottom */
+            left: 50%; /* Position at the center horizontally */
+            transform: translateX(-50%); /* Center the button exactly */
+            border-radius: 12px;
+            width: 80%;
+        }
+
+      
+
+        
+  </style>
+</head>
+<body>
+  <!-- Top Bar with Navigation -->
+  <div class="top-bar">
+    <div class="logo">LUNACLOSET</div>
+    <div class="navbar">
+      <a href="#home">Home</a>
+      <a href="#about">About Us</a>
+      <a href="#contact">Contact Us</a>
+      <a href="shop.html">Shop</a>
+    </div>
+  </div>
+
+  <!-- Trending Section -->
+  <section class="trending-section">
+    <div class="trending-box">
+      <img src="c:\Users\Admin\Pictures\Screenshots\Screenshot (580).png" alt="Trending Cloth">
+      <div class="trending-text">Comfy Clothes</div>
+      <div class="product-info">
+        <p><strong>Comfy Sweater</strong> - $49.99</p>
+        <p><strong>Long Coat</strong> - $19.99</p>
+      </div>
+    </div>
+
+    <!-- Product Grid Section -->
+    <div class="product-grid">
+      <div class="product-item">
+        <img src="c:\Users\Admin\Pictures\Screenshots\Screenshot (578).png" alt="Comfy Sweater">
+        <div class="product-name">Comfy Sweater - $49.99</div>
+        <div class="button-container" style="text-align: center; margin-top: 20px;">
+          <a href="shop.html">
+            <button class="styled-button">Buy Now</button>
+          </a>
+          
+        </div>
+      </div>
+      <div class="product-item">
+        <img src="c:\Users\Admin\Pictures\Screenshots\Screenshot (581).png" alt="Long Coat">
+        <div class="product-name">Long Coat - $19.99</div>
+        <div class="button-container" style="text-align: center; margin-top: 20px;">
+          <a href="shop.html">
+            <button class="styled-button">Buy Now</button>
+          </a>
+          
+        </div>
+         <!-- Product 3 -->
+      <div class="product-item">
+        <img src="data:image/jpeg;base64,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" alt="Winter Beanie">
+        <div class="product-name">Winter Beanie - $14.99</div>
+        <div class="button-container" style="text-align: center; margin-top: 20px;">
+          <button class="styled-button">Buy Now</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Kids Section -->
+  <section class="kids-section">
+    <h2>Hand Bags</h2>
+    <div class="kids-grid">
+      <!-- Kids Product 1 -->
+      <div class="product-item">
+        <img src="c:\Users\Admin\Pictures\Screenshots\Screenshot (588).png" alt="Black Hand Bag">
+        <div class="product-name">Black Hand Bag - $29.99</div>
+        <a href="shop.html">
+          <button class="styled-button">Buy Now</button>
+        </a>
+      </div>
+
+      <!-- Kids Product 2 -->
+      <div class="product-item">
+        <img src="c:\Users\Admin\Pictures\Screenshots\Screenshot (592).png" alt="Different Collections">
+        <div class="product-name">Different Collections - $24.99</div>
+        <a href="shop.html">
+          <button class="styled-button">Buy Now</button>
+        </a>
+      </div>
+
+    
+
+      </div>
+    </div>
+    
+
+    
+    <!-- Just For you Section -->
+  <section class="just-for-you-section">
+    <div class="just-for-you-box">
+      <img src="c:\Users\Admin\Pictures\Screenshots\Screenshot (589).png" alt="Trending Cloth">
+      <div class="just-for-you-text">Casuals For You</div>
+      <div class="product-info">
+        <p><strong>Pants</strong> - $xx.xx</p>
+        <p><strong>Neckline and Sleeve</strong> - $xx.xx</p>
+        <p><strong>Sweatshirt</strong> - $xx.xx</p>
+      </div>
+    </div>
+
+    <section class="just-for-you-section">
+      <h2>Just For You</h2>
+      <div class="sports-grid">
+        <div class="sport-item">
+          <img src="c:\Users\Admin\Pictures\Screenshots\Screenshot (591).png" alt="Football Jersey">
+          <div class="sport-name">Pants - $29.99</div>
+          <a href="shop.html">
+            <button class="styled-button">Buy Now</button>
+          </a>
+        </div>
+        <div class="sport-item">
+          <img src="c:\Users\Admin\Pictures\Screenshots\Screenshot (586).png" alt="Running Shoes">
+          <div class="sport-name">Neckline And Sleeve - $59.99</div>
+          <a href="shop.html">
+            <button class="styled-button">Buy Now</button>
+          </a>
+        </div>
+        <div class="sport-item">
+          <img src="c:\Users\Admin\Pictures\Screenshots\Screenshot (579).png" alt="Gym Bag">
+          <div class="sport-name">Sweatshirt - $24.99</div>
+          <a href="shop.html">
+            <button class="styled-button">Buy Now</button>
+          </a>
+        </div>
+      </div>
+    </section>
+</body>
+</html>
+
